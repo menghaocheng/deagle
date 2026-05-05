@@ -32,6 +32,10 @@ public class Toasts {
 		show(context, text, Toast.LENGTH_SHORT);
 	}
 
+	public static void showShort(final Context context, final CharSequence text) {
+		show(context, text, Toast.LENGTH_SHORT);
+	}
+
 	public static void show(final Context context, final @StringRes int text, final @Duration int length) {
 		show(context, context.getText(text), length);
 	}

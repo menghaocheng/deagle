@@ -1,11 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    namespace 'com.oasisfeng.deagle'
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 34
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -15,8 +16,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding = true
+        buildConfig = true
     }
 }
 
@@ -24,11 +26,11 @@ dependencies {
     implementation 'net.sourceforge.streamsupport:android-retrostreams:1.7.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'          // Reference to class ParametersAreNonnullByDefault
     implementation 'androidx.browser:browser:1.0.0'                 // class WebContent (not yet fully decoupled for "runtimeOnly"
-    runtimeOnly 'androidx.lifecycle:lifecycle-viewmodel:2.0.0'      // class LifecycleViewModelActivity, LifecycleViewModelFragment
-    runtimeOnly 'androidx.lifecycle:lifecycle-livedata-core:2.0.0'  // class NonNullMutableLiveData
-    runtimeOnly 'androidx.appcompat:appcompat:1.0.2'                // class Dialogs
-    runtimeOnly 'androidx.recyclerview:recyclerview:1.0.0'          // class RecyclerViewBindings & BindingRecyclerViewAdapter
-    runtimeOnly 'com.google.android.material:material:1.0.0'        // class BottomSheetBindingAdapter
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1'      // class LifecycleViewModelActivity, LifecycleViewModelFragment
+    implementation 'androidx.lifecycle:lifecycle-livedata-core:2.5.1'  // class NonNullMutableLiveData
+    implementation 'androidx.appcompat:appcompat:1.0.2'                // class Dialogs
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'          // class RecyclerViewBindings & BindingRecyclerViewAdapter
+    implementation 'com.google.android.material:material:1.0.0'        // class BottomSheetBindingAdapter
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

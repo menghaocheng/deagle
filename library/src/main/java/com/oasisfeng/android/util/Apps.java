@@ -71,10 +71,14 @@ public class Apps {
     public @CheckResult boolean isInstalledInCurrentUser(final String pkg) {
         try { @SuppressWarnings("deprecation")
             final ApplicationInfo info = mContext.getPackageManager().getApplicationInfo(pkg, GET_UNINSTALLED_PACKAGES);
-            return (info.flags & ApplicationInfo.FLAG_INSTALLED) != 0;
+            return isInstalledInCurrentUser(info);
         } catch (final NameNotFoundException e) {
             return false;
         }
+    }
+
+    public static @CheckResult boolean isInstalledInCurrentUser(final ApplicationInfo info) {
+        return (info.flags & ApplicationInfo.FLAG_INSTALLED) != 0;
     }
 
     /** Use {@link #isInstalledInCurrentUser(String)} or {@link #isInstalledOnDevice(String)} instead */
@@ -123,7 +127,7 @@ public class Apps {
         return false;
     }
 
-    private static boolean isSystem(final ApplicationInfo app) {
+    public static boolean isSystem(final ApplicationInfo app) {
         return (app.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
     }
 

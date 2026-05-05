@@ -9,8 +9,10 @@ import com.oasisfeng.android.util.Suppliers;
 import com.oasisfeng.deagle.BuildConfig;
 
 import java.io.IOException;
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -77,6 +79,7 @@ public class Hack {
 	 */
 	public interface Mirror<T> {}
 	@Retention(RetentionPolicy.RUNTIME) public @interface SourceClass { String value(); }
+	@Retention(RetentionPolicy.RUNTIME) @Target(ElementType.METHOD) public @interface Fallback { int value(); int TRUE = 1; int FALSE = 0; }
 
 	public interface HackedObject {
 		<T, M extends Mirror<T>> M with(final Class<M> mirror_class);
